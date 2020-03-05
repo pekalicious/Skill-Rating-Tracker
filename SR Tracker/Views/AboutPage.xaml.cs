@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using SR_Tracker.Models;
-using SR_Tracker.ViewModels;
+using Pekalicious.SrTracker.Models;
+using Pekalicious.SrTracker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SR_Tracker.Views
+namespace Pekalicious.SrTracker.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

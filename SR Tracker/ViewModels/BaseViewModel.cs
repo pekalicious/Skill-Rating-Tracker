@@ -5,10 +5,10 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using SR_Tracker.Models;
-using SR_Tracker.Services;
+using Pekalicious.SrTracker.Models;
+using Pekalicious.SrTracker.Services;
 
-namespace SR_Tracker.ViewModels
+namespace Pekalicious.SrTracker.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

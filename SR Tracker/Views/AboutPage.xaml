@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SR_Tracker.Views.AboutPage"
-             xmlns:vm="clr-namespace:SR_Tracker.ViewModels"
+             x:Class="Pekalicious.SrTracker.Views.AboutPage"
+             xmlns:vm="clr-namespace:Pekalicious.SrTracker.ViewModels"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>

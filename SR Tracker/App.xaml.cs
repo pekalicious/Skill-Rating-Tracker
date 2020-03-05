@@ -1,10 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SR_Tracker.Services;
-using SR_Tracker.Views;
+using Pekalicious.SrTracker.Services;
+using Pekalicious.SrTracker.Views;
 
-namespace SR_Tracker
+namespace Pekalicious.SrTracker
 {
     public partial class App : Application
     {

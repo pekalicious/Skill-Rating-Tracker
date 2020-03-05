@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
-using SR_Tracker.Models;
+using Pekalicious.SrTracker.Models;
 
-namespace SR_Tracker.ViewModels
+namespace Pekalicious.SrTracker.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {

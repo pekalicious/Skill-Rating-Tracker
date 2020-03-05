@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace SR_Tracker.ViewModels
+namespace Pekalicious.SrTracker.ViewModels
 {
     public class CutoffConverter : IValueConverter
     {

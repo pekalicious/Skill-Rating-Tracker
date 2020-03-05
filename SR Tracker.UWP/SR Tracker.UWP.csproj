@@ -7,8 +7,8 @@
     <ProjectGuid>{4D70AFE7-833A-4B73-854F-B83ADA493015}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SR_Tracker.UWP</RootNamespace>
-    <AssemblyName>SR Tracker.UWP</AssemblyName>
+    <RootNamespace>Pekalicious.SrTracker.UWP</RootNamespace>
+    <AssemblyName>SrTracker.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>

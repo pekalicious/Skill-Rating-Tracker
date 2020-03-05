@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SR_Tracker.Services
+namespace Pekalicious.SrTracker.Services
 {
     public interface IDataStore<T>
     {

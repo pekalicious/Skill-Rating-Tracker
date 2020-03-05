@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace SR_Tracker.iOS
+namespace Pekalicious.SrTracker.iOS
 {
     public class Application
     {

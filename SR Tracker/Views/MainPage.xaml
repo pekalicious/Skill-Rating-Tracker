@@ -4,8 +4,8 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
-            xmlns:views="clr-namespace:SR_Tracker.Views"
-            x:Class="SR_Tracker.Views.MainPage">
+            xmlns:views="clr-namespace:Pekalicious.SrTracker.Views"
+            x:Class="Pekalicious.SrTracker.Views.MainPage">
 
     <TabbedPage.Children>
         <NavigationPage Title="Today">

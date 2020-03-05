@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using SR_Tracker.Models;
-using SR_Tracker.Views;
+using Pekalicious.SrTracker.Models;
+using Pekalicious.SrTracker.Views;
 
-namespace SR_Tracker.ViewModels
+namespace Pekalicious.SrTracker.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {

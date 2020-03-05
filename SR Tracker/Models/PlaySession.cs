@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace SR_Tracker.Models
+namespace Pekalicious.SrTracker.Models
 {
     public class PlaySession
     {
