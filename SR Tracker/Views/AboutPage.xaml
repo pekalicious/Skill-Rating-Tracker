@@ -10,8 +10,8 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Undo" Clicked="Undo_Clicked" />
-        <ToolbarItem Text="New" Clicked="New_Clicked" />
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Start" Clicked="New_Clicked" />
+        <ToolbarItem Text="End" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Resources>
@@ -75,19 +75,15 @@
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="18">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Games: " />
-                                <Span Text="{Binding GamesPlayed}" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" Highest: " />
-                                <Span Text="3440" FontAttributes="Bold" FontSize="22" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+            <StackLayout Orientation="Vertical" Padding="12,0,12,0" Spacing="10">
+                <Grid>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Games:"/>
+                    <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="{Binding GamesPlayed}" />
+                    <Label Grid.Row="0" Grid.Column="2" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Highest:"/>
+                    <Label Grid.Row="0" Grid.Column="3" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="3440" />
+                    <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Streak:"/>
+                    <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="{Binding Streak}" />
+                </Grid>
                 <Button Margin="0,10,0,0" Padding="0,20,0,20" FontSize="24" FontAttributes="Bold" Text="Win" Clicked="Win_Clicked" BackgroundColor="{StaticResource WinColor}" TextColor="White" />
                 <Button Margin="0,10,0,0" Padding="0,0,0,0" FontSize="16" FontAttributes="Bold" Text="Draw" Clicked="Draw_Clicked" BackgroundColor="{StaticResource DrawColor}" TextColor="White" />
                 <Button Margin="0,10,0,0" Padding="0,20,0,20" FontSize="24" FontAttributes="Bold" Text="Loss" Clicked="Loss_Clicked" BackgroundColor="{StaticResource LossColor}" TextColor="White" />
