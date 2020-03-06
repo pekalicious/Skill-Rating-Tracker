@@ -55,7 +55,7 @@ namespace Pekalicious.SrTracker.ViewModels
             return CurrentStreak;
         }
     }
-    public class AboutViewModel : BaseViewModel
+    public class CurrentSessionViewModel : BaseViewModel
     {
         private int lastOverallDiffValue;
         private int lastGamesPlayedValue;
@@ -91,7 +91,7 @@ namespace Pekalicious.SrTracker.ViewModels
             get { return PlaySession.GamesPlayed; }
         }
         public PlaySession PlaySession { get; set; }
-        public AboutViewModel()
+        public CurrentSessionViewModel()
         {
             PlaySession = new PlaySession();
             streak = new StreakController();

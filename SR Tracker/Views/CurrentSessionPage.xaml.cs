@@ -12,13 +12,13 @@ namespace Pekalicious.SrTracker.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
-        private AboutViewModel viewModel;
+        private CurrentSessionViewModel viewModel;
 
         public AboutPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new AboutViewModel();
+            BindingContext = viewModel = new CurrentSessionViewModel();
         }
         
         async void Win_Clicked(object sender, EventArgs e)
@@ -43,12 +43,12 @@ namespace Pekalicious.SrTracker.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-
+            viewModel.EndSession();
         }
 
         async void New_Clicked(object sender, EventArgs e)
         {
-            viewModel.Reset();
+            viewModel.StartNewSession();
         }
     }
 }
