@@ -5,12 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Pekalicious.SrTracker.Views.CurrentSessionPage"
-             xmlns:vm="clr-namespace:Pekalicious.SrTracker.ViewModels"
-             Title="{Binding Title}">
+             xmlns:vm="clr-namespace:Pekalicious.SrTracker.ViewModels">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Undo" Clicked="Undo_Clicked" />
-        <ToolbarItem Text="Start" Clicked="New_Clicked" />
         <ToolbarItem Text="End" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
 

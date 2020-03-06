@@ -8,14 +8,14 @@
             x:Class="Pekalicious.SrTracker.Views.MainPage">
 
     <TabbedPage.Children>
-        <NavigationPage Title="Today">
+        <NavigationPage Title="Session">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <views:StartSessionPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="History">
