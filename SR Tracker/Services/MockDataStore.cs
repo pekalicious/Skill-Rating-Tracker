@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SR_Tracker.Models;
+using Pekalicious.SrTracker.Models;
 
-namespace SR_Tracker.Services
+namespace Pekalicious.SrTracker.Services
 {
     public class MockDataStore : IDataStore<PlaySession>
     {
@@ -14,12 +14,12 @@ namespace SR_Tracker.Services
         {
             items = new List<PlaySession>()
             {
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "First playSession", Description="This is an playSession description." },
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "Second playSession", Description="This is an playSession description." },
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "Third playSession", Description="This is an playSession description." },
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "Fourth playSession", Description="This is an playSession description." },
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "Fifth playSession", Description="This is an playSession description." },
-                new PlaySession { Id = Guid.NewGuid().ToString(), Text = "Sixth playSession", Description="This is an playSession description." }
+                new PlaySession { Id = 0 },
+                new PlaySession { Id = 1 },
+                new PlaySession { Id = 2 },
+                new PlaySession { Id = 3 },
+                new PlaySession { Id = 4 },
+                new PlaySession { Id = 5 }
             };
         }
 
@@ -39,7 +39,7 @@ namespace SR_Tracker.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
             var oldItem = items.Where((PlaySession arg) => arg.Id == id).FirstOrDefault();
             items.Remove(oldItem);
@@ -47,7 +47,7 @@ namespace SR_Tracker.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<PlaySession> GetItemAsync(string id)
+        public async Task<PlaySession> GetItemAsync(int id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Pekalicious.SrTracker.Models;
 
@@ -9,7 +9,6 @@ namespace Pekalicious.SrTracker.ViewModels
         public PlaySession PlaySession { get; set; }
         public ItemDetailViewModel(PlaySession playSession = null)
         {
-            Title = playSession?.Text;
             PlaySession = playSession;
         }
     }

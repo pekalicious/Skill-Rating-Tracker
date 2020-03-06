@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,12 +26,7 @@ namespace Pekalicious.SrTracker.Views
         {
             InitializeComponent();
 
-            var item = new PlaySession
-            {
-                Text = "PlaySession 1",
-                Description = "This is an playSession description."
-            };
-
+            var item = new PlaySession();
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
         }
