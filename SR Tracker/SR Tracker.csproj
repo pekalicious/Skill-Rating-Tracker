@@ -14,6 +14,10 @@
 
   <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.7.302-beta" />
+    <PackageReference Include="SQLitePCL.raw" Version="0.9.4-pre1" />
+    <PackageReference Include="SQLitePCL.raw_basic" Version="0.9.0-pre8" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.2" />
+    <PackageReference Include="SQLitePCLRaw.core" Version="2.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.379-pre1" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
@@ -22,5 +26,20 @@
     <Compile Update="Views\CurrentSessionPage.xaml.cs">
       <DependentUpon>CurrentSessionPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\EditGameSeasonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SaveSessionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SelectGameSeasonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\StartSessionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

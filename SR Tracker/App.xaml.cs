@@ -8,12 +8,12 @@ namespace Pekalicious.SrTracker
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<Database>();
             MainPage = new MainPage();
         }
 

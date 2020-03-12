@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +57,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.7.302-beta</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCL.plugin.sqlite3.android">
+      <Version>0.9.4-pre2</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCL.raw">
+      <Version>0.9.4-pre1</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCL.raw_basic">
+      <Version>0.9.0-pre8</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.bundle_green">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.core">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3.android">
+      <Version>1.1.14</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
       <Version>28.0.0.3</Version>
     </PackageReference>

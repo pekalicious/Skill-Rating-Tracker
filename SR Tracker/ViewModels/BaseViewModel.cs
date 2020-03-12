@@ -13,6 +13,7 @@ namespace Pekalicious.SrTracker.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<PlaySession> DataStore => DependencyService.Get<IDataStore<PlaySession>>();
+        public Database Database => DependencyService.Get<Database>();
 
         bool isBusy = false;
         public bool IsBusy
