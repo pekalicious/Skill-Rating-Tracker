@@ -38,17 +38,17 @@ namespace Pekalicious.SrTracker.Views
             ItemsListView.SelectedItem = null;
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        async void SelectSeason_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SelectGameSeasonPage());
         }
     }
 }

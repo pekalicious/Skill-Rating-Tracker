@@ -14,19 +14,32 @@ namespace Pekalicious.SrTracker.ViewModels
     {
         public ObservableCollection<PlaySession> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public string SelectedGameSeason { get; private set; }
+        public string SeasonHigh { get; private set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
             Items = new ObservableCollection<PlaySession>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadCurrentGameSeason();
+        }
 
-            MessagingCenter.Subscribe<NewItemPage, PlaySession>(this, "AddItem", async (obj, item) =>
+        async void LoadCurrentGameSeason()
+        {
+            GameSeason lastUsedSeason = await Database.AppState.LastUsedSeason();
+            if (lastUsedSeason != null)
             {
-                var newItem = item as PlaySession;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+                SelectedGameSeason = lastUsedSeason.Name;
+                SeasonHigh = lastUsedSeason.HighestSkillRating.ToString();
+            }
+            else
+            {
+                SelectedGameSeason = "Season Not Selected";
+                SeasonHigh = "XXXX";
+            }
+            OnPropertyChanged("SelectedGameSeason");
+            OnPropertyChanged("SeasonHigh");
         }
 
         async Task ExecuteLoadItemsCommand()

@@ -59,7 +59,6 @@ namespace Pekalicious.SrTracker.ViewModels
     {
         private int lastOverallDiffValue;
         private int lastGamesPlayedValue;
-        private bool sessionStarted;
         private StreakController streak;
 
         public int Streak
@@ -90,12 +89,16 @@ namespace Pekalicious.SrTracker.ViewModels
             }
             get { return PlaySession.GamesPlayed; }
         }
+
+        public int HighestSkillRating { get; private set; }
+
         public PlaySession PlaySession { get; set; }
-        public CurrentSessionViewModel()
+        public CurrentSessionViewModel(GameSeason currentSeason)
         {
             PlaySession = new PlaySession();
             streak = new StreakController();
             Title = "Today";
+            HighestSkillRating = currentSeason.HighestSkillRating;
 
             StartNewSession();
         }
@@ -141,13 +144,11 @@ namespace Pekalicious.SrTracker.ViewModels
             lastGamesPlayedValue = 0;
             PlaySession.Date = DateTime.Now;
             Streak = streak.Reset();
-
-            sessionStarted = true;
         }
 
-        public void EndSession()
+        public PlaySession EndSession()
         {
-            sessionStarted = false;
+            return PlaySession;
         }
     }
 }

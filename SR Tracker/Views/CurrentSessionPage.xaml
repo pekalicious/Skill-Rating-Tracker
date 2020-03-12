@@ -78,7 +78,7 @@
                     <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Games:"/>
                     <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="{Binding GamesPlayed}" />
                     <Label Grid.Row="0" Grid.Column="2" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Highest:"/>
-                    <Label Grid.Row="0" Grid.Column="3" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="3440" />
+                    <Label Grid.Row="0" Grid.Column="3" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="{Binding HighestSkillRating}" />
                     <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" FontSize="12" FontAttributes="None" Text="Streak:"/>
                     <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Center" FontSize="26" FontAttributes="Bold" Text="{Binding Streak}" />
                 </Grid>

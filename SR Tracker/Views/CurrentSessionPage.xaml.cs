@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using Pekalicious.SrTracker.Models;
 using Pekalicious.SrTracker.ViewModels;
 using Xamarin.Forms;
@@ -14,13 +16,14 @@ namespace Pekalicious.SrTracker.Views
     {
         private CurrentSessionViewModel viewModel;
 
-        public CurrentSessionPage()
+        public CurrentSessionPage(GameSeason currentSeason)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new CurrentSessionViewModel();
+            BindingContext = viewModel = new CurrentSessionViewModel(currentSeason);
+            viewModel.StartNewSession();
         }
-        
+
         async void Win_Clicked(object sender, EventArgs e)
         {
             viewModel.RecordWin();
@@ -43,12 +46,9 @@ namespace Pekalicious.SrTracker.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            viewModel.EndSession();
+            Navigation.RemovePage(Navigation.NavigationStack.Last());
+            await Navigation.PushModalAsync(new SaveSessionPage(viewModel.EndSession()));
         }
 
-        async void New_Clicked(object sender, EventArgs e)
-        {
-            viewModel.StartNewSession();
-        }
     }
 }

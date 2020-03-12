@@ -14,15 +14,24 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Button Text="Start New Session"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                BackgroundColor="{StaticResource Primary}"
-                TextColor="White"
-                Padding="40,20,40,20"
-                FontSize="22"
-                Clicked="StartSessionButton_Clicked"/>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Button Text="Start New Session"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="{StaticResource Primary}"
+                    TextColor="White"
+                    Padding="40,20,40,20"
+                    FontSize="22"
+                    Clicked="StartSessionButton_Clicked"
+                    IsEnabled="{Binding CanStartSession}"/>
+                <Label Text="Select game season: History > Select Season"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="18"
+                       TextColor="DarkGray"
+                       IsVisible="{Binding ShowLabel}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
