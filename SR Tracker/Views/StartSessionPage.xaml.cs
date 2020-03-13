@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pekalicious.SrTracker.Models;
+using Pekalicious.SrTracker.Core;
 using Pekalicious.SrTracker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,8 +26,8 @@ namespace Pekalicious.SrTracker.Views
         async void StartSessionButton_Clicked(object sender, EventArgs e)
         {
             var db = DependencyService.Get<Database>();
-            var lastSeason = await db.AppState.LastUsedSeason();
-            await Navigation.PushAsync(new CurrentSessionPage(lastSeason));
+            Maybe<GameSeason> lastSeason = await db.AppState.LastUsedSeason();
+            await Navigation.PushAsync(new CurrentSessionPage(lastSeason.Item)); //TODO: Should not pass Maybe<T>.Item
         }
 
         protected override void OnAppearing()

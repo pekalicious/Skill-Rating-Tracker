@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using Pekalicious.SrTracker.Models;
+using Pekalicious.SrTracker.Core;
 using Pekalicious.SrTracker.Views;
 
 namespace Pekalicious.SrTracker.ViewModels
@@ -27,11 +28,11 @@ namespace Pekalicious.SrTracker.ViewModels
 
         async void LoadCurrentGameSeason()
         {
-            GameSeason lastUsedSeason = await Database.AppState.LastUsedSeason();
-            if (lastUsedSeason != null)
+            Maybe<GameSeason> lastUsedSeason = await Database.AppState.LastUsedSeason();
+            if (lastUsedSeason.HasItem)
             {
-                SelectedGameSeason = lastUsedSeason.Name;
-                SeasonHigh = lastUsedSeason.HighestSkillRating.ToString();
+                SelectedGameSeason = lastUsedSeason.Item.Name;
+                SeasonHigh = lastUsedSeason.Item.HighestSkillRating.ToString();
             }
             else
             {

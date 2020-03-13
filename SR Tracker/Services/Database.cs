@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Pekalicious.SrTracker.Core;
 using Pekalicious.SrTracker.Models;
 using SQLite;
 
@@ -19,13 +20,16 @@ namespace Pekalicious.SrTracker
                 _database = db;
             }
 
-            public async Task<GameSeason> LastUsedSeason()
+            public async Task<Maybe<GameSeason>> LastUsedSeason()
             {
                 var stateValue = await _database.GetAppStateValue(Models.AppState.LAST_USED_SEASON);
                 if (stateValue == null)
-                    return null; //TODO: Create Maybe class and get rid of nulls
+                {
+                    return new Maybe<GameSeason>();
+                }
 
-                return await _database.GetSeasonById(int.Parse(stateValue.Value));
+                GameSeason season = await _database.GetSeasonById(int.Parse(stateValue.Value));
+                return new Maybe<GameSeason>(season);
             }
 
             public async Task SetLastUsedSeason(GameSeason season)

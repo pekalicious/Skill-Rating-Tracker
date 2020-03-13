@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             mc:Ignorable="d"
+             x:Class="Pekalicious.SrTracker.Views.CurrentGameSeasonView">
+    <ContentView.Content>
+        <Grid WidthRequest="300" HeightRequest="300" HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="24" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="{x:Static fontawesome:FontAwesomeIcons.Edit}" 
+                    Margin="0,0,-18,0"
+                     BackgroundColor="Transparent"
+                     FontSize="28"
+                     HorizontalOptions="End"
+                     FontFamily="{StaticResource FontAwesomeSolid}"/>
+            <Label Grid.Row="0" Grid.Column="0" Text="{Binding CurrentSeasonName}" HorizontalTextAlignment="Start" FontSize="18" Margin="12,18,0,0"/>
+            <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding SeasonHigh}" HorizontalTextAlignment="Center" FontSize="100" FontAttributes="Bold" />
+                <Label Text="Season High" HorizontalTextAlignment="Center" Margin="0,-30,0,0"/>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
