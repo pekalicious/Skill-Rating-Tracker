@@ -66,11 +66,6 @@ namespace Pekalicious.SrTracker
             return _database.Table<GameSeason>().ToListAsync();
         }
 
-        public Task<int> SaveSeasonAsync(GameSeason season)
-        {
-            return _database.InsertAsync(season);
-        }
-
         public Task<GameSeason> GetSeasonById(int id)
         {
             return _database.GetAsync<GameSeason>(id);
@@ -102,6 +97,11 @@ namespace Pekalicious.SrTracker
         public Task<int> UpdateGameSeason(GameSeason editingGameSeason)
         {
             return _database.UpdateAsync(editingGameSeason);
+        }
+
+        public Task<int> AddPlaySession(PlaySession playSession)
+        {
+            return _database.InsertAsync(playSession);
         }
     }
 }

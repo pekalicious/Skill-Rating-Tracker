@@ -17,7 +17,6 @@ namespace Pekalicious.SrTracker.ViewModels
 
         public SelectGameSeasonViewModel()
         {
-            Title = "Select Game Season";
             Items = new ObservableCollection<GameSeason>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

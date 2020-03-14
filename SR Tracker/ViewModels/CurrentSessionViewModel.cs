@@ -93,12 +93,14 @@ namespace Pekalicious.SrTracker.ViewModels
         public int HighestSkillRating { get; private set; }
 
         public PlaySession PlaySession { get; set; }
+        public GameSeason CurrentGameSeason { get; private set; }
         public CurrentSessionViewModel(GameSeason currentSeason)
         {
             PlaySession = new PlaySession();
             streak = new StreakController();
             Title = "Today";
-            HighestSkillRating = currentSeason.HighestSkillRating;
+            CurrentGameSeason = currentSeason;
+            HighestSkillRating = CurrentGameSeason.HighestSkillRating;
 
             StartNewSession();
         }

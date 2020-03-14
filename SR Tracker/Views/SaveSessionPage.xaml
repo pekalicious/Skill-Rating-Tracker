@@ -6,10 +6,27 @@
              mc:Ignorable="d"
              x:Class="Pekalicious.SrTracker.Views.SaveSessionPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <FlexLayout Direction="Column">
+            <StackLayout FlexLayout.Grow="1">
+                <Label Text="Play Session Saved!"
+                       Margin="0,30,0,0"
+                       FontSize="16"
+                    HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="NewSeasonHigh"
+                        Placeholder="Skill rating" 
+                       HorizontalOptions="Center" 
+                       Text="{Binding SeasonHigh}"
+                       WidthRequest="200" 
+                       FontSize="72" />
+                <Label Text="Season High"
+                       Margin="0,-10,0,0"
+                       FontSize="16"
+                       TextColor="DarkGray"
+                       HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <Button Text="Done" 
+                    Margin="40,40,40,40"
+                    Clicked="Button_OnClicked"/>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

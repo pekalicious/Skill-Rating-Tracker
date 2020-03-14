@@ -33,18 +33,22 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Text}" 
-                                       d:Text="{Binding .}"
-                                       LineBreakMode="NoWrap" 
-                                       Style="{DynamicResource ListItemTextStyle}" 
-                                       FontSize="16" />
-                                <Label Text="{Binding Description}" 
-                                       d:Text="PlaySession description"
-                                       LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemDetailTextStyle}"
-                                       FontSize="13" />
-                            </StackLayout>
+                            <FlexLayout Direction="Row">
+                                <StackLayout Padding="10" FlexLayout.Grow="1">
+                                    <Label Text="{Binding Name}" 
+                                           d:Text="{Binding .}"
+                                           LineBreakMode="NoWrap" 
+                                           FontSize="24"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding HighestSkillRating}" 
+                                           d:Text="{Binding .}"
+                                           LineBreakMode="NoWrap"
+                                           FontSize="13" />
+                                </StackLayout>
+                                <Button Text="Edit"
+                                        BackgroundColor="Transparent"
+                                        TextColor="LightGray"/>
+                            </FlexLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

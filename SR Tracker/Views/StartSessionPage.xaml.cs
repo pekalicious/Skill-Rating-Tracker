@@ -20,6 +20,7 @@ namespace Pekalicious.SrTracker.Views
         {
             InitializeComponent();
 
+            Title = "SR Tracker";
             BindingContext = viewModel = new StartSessionViewModel();
         }
 
@@ -34,6 +35,7 @@ namespace Pekalicious.SrTracker.Views
         {
             base.OnAppearing();
             viewModel.CheckSeason();
+            CurrentGameSeasonView.viewModel.LoadCurrentGameSeasonCommand.Execute(null);
         }
     }
 }

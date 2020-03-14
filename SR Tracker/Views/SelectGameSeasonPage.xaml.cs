@@ -18,13 +18,19 @@ namespace Pekalicious.SrTracker.Views
         public SelectGameSeasonPage()
         {
             InitializeComponent();
-
+            Title = "Select Season";
             BindingContext = viewModel = new SelectGameSeasonViewModel();
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NavigationPage(new EditGameSeasonPage()));
+            await Navigation.PushAsync(new EditGameSeasonPage());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.LoadItemsCommand.Execute(null);
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -35,7 +41,7 @@ namespace Pekalicious.SrTracker.Views
 
             viewModel.SelectGameSeason(item);
 
-            // Manually deselect playSession.
+            // Manually deselect item.
             ItemsListView.SelectedItem = null;
             await Navigation.PopAsync();
         }
