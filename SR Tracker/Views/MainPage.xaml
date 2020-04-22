@@ -9,24 +9,24 @@
 
     <TabbedPage.Children>
         <NavigationPage Title="Session">
+            <x:Arguments>
+                <views:StartSessionPage />
+            </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_about.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:StartSessionPage />
-            </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="History">
+            <x:Arguments>
+                <views:ItemsPage />
+            </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
-            <x:Arguments>
-                <views:ItemsPage />
-            </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
     
