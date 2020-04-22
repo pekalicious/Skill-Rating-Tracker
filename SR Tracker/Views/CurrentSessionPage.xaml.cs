@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Microcharts;
 using Pekalicious.SrTracker.Models;
 using Pekalicious.SrTracker.ViewModels;
 using Xamarin.Forms;
@@ -27,21 +28,25 @@ namespace Pekalicious.SrTracker.Views
         async void Win_Clicked(object sender, EventArgs e)
         {
             viewModel.RecordWin();
+            UpdateChart();
         }
         
         async void Draw_Clicked(object sender, EventArgs e)
         {
             viewModel.Draw();
+            UpdateChart();
         }
 
         async void Loss_Clicked(object sender, EventArgs e)
         {
             viewModel.Loss();
+            UpdateChart();
         }
 
         async void Undo_Clicked(object sender, EventArgs e)
         {
             viewModel.Undo();
+            UpdateChart();
         }
 
         async void Save_Clicked(object sender, EventArgs e)
@@ -50,5 +55,21 @@ namespace Pekalicious.SrTracker.Views
             await Navigation.PushModalAsync(new SaveSessionPage(viewModel.EndSession(), viewModel.CurrentGameSeason));
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            UpdateChart();
+        }
+
+        private void UpdateChart()
+        {
+            testChart.Chart = new LineChart()
+            {
+                Entries = viewModel.Entries,
+                LineMode = LineMode.Straight,
+                PointMode = PointMode.Square,
+            };
+        }
     }
 }
