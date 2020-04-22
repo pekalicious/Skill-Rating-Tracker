@@ -27,7 +27,6 @@ namespace Pekalicious.SrTracker.Views
             SaveSessionViewModel.SaveParams saveParams = new SaveSessionViewModel.SaveParams();
 
             int.TryParse(SessionSkillRating.Text, out saveParams.SessionSkillRating);
-            int.TryParse(NewSeasonHigh.Text, out saveParams.NewSeasonHigh);
 
             viewModel.SaveLastPlaySessionCommand.Execute(saveParams);
             await Navigation.PopModalAsync();
