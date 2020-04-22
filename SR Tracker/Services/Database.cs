@@ -45,10 +45,7 @@ namespace Pekalicious.SrTracker
         public Database()
         {
             var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "sr-tracker.db3");
-            //bool initializeNewDatabase = !File.Exists(path);
-            bool initializeNewDatabase = true;
-            if (File.Exists(path))
-                File.Delete(path);
+            bool initializeNewDatabase = ShouldInitializeDatabase(path);
 
             _database = new SQLiteAsyncConnection(path);
             if (initializeNewDatabase)
@@ -59,6 +56,14 @@ namespace Pekalicious.SrTracker
             }
 
             AppState = new AppStateWrapper(this);
+        }
+
+        private bool ShouldInitializeDatabase(string path)
+        {
+            if (File.Exists(path))
+                File.Delete(path);
+            return true;
+            return !File.Exists(path);
         }
 
         public Task<List<GameSeason>> GetAllSeasons()
