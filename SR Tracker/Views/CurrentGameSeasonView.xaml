@@ -27,6 +27,8 @@
                         Clicked="Button_OnClicked"/>
             </FlexLayout>
             <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding CurrentRating}" HorizontalTextAlignment="Center" FontSize="100" FontAttributes="Bold" />
+                <Label Text="Current Rating" HorizontalTextAlignment="Center" Margin="0,-30,0,0"/>
                 <Label Text="{Binding SeasonHigh}" HorizontalTextAlignment="Center" FontSize="100" FontAttributes="Bold" />
                 <Label Text="Season High" HorizontalTextAlignment="Center" Margin="0,-30,0,0"/>
             </StackLayout>

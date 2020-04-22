@@ -10,6 +10,7 @@ namespace Pekalicious.SrTracker.ViewModels
 {
     public class CurrentGameSeasonViewModel : BaseViewModel
     {
+        public string CurrentRating { get; private set; }
         public string SeasonHigh { get; private set; }
         public string CurrentSeasonName { get; private set; }
         public Command LoadCurrentGameSeasonCommand { get; set; }
@@ -24,15 +25,18 @@ namespace Pekalicious.SrTracker.ViewModels
             Maybe<GameSeason> currentSeason = await Database.AppState.LastUsedSeason();
             if (currentSeason.HasItem)
             {
+                CurrentRating = currentSeason.Item.LastSkillRating.ToString();
                 SeasonHigh = currentSeason.Item.HighestSkillRating.ToString();
                 CurrentSeasonName = currentSeason.Item.Name;
             }
             else
             {
+                CurrentRating = "";
                 SeasonHigh = "";
                 CurrentSeasonName = "<NO SEASON SELECTED>";
             }
 
+            OnPropertyChanged(nameof(CurrentRating));
             OnPropertyChanged(nameof(SeasonHigh));
             OnPropertyChanged(nameof(CurrentSeasonName));
         }

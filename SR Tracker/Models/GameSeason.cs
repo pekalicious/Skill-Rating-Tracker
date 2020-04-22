@@ -12,5 +12,6 @@ namespace Pekalicious.SrTracker.Models
         public int Id { get; set; } = -1;
         public string Name { get; set; }
         public int HighestSkillRating { get; set; }
+        public int LastSkillRating { get; set; }
     }
 }
