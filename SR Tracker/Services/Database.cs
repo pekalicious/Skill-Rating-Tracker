@@ -62,7 +62,7 @@ namespace Pekalicious.SrTracker
         {
             if (File.Exists(path))
                 File.Delete(path);
-            return true;
+            //return true;
             return !File.Exists(path);
         }
 
