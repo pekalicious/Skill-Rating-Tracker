@@ -22,24 +22,14 @@ namespace Pekalicious.SrTracker.Views
             BindingContext = viewModel = new SaveSessionViewModel(session, currentSeason);
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            viewModel.SaveLastPlaySessionCommand.Execute(null);
-        }
-
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            try
-            {
-                int newSeasonHigh = int.Parse(NewSeasonHigh.Text);
-                await viewModel.UpdateSeasonHigh(newSeasonHigh);
-            }
-            catch (Exception exception)
-            {
-                Console.Error.WriteLine(exception);
-            }
+            SaveSessionViewModel.SaveParams saveParams = new SaveSessionViewModel.SaveParams();
 
+            int.TryParse(SessionSkillRating.Text, out saveParams.SessionSkillRating);
+            int.TryParse(NewSeasonHigh.Text, out saveParams.NewSeasonHigh);
+
+            viewModel.SaveLastPlaySessionCommand.Execute(saveParams);
             await Navigation.PopModalAsync();
         }
     }

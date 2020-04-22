@@ -10,6 +10,11 @@ namespace Pekalicious.SrTracker.ViewModels
 {
     public class SaveSessionViewModel : BaseViewModel
     {
+        public class SaveParams
+        {
+            public int SessionSkillRating;
+            public int NewSeasonHigh;
+        }
         public int SeasonHigh { get; private set; }
         public PlaySession PlaySession { get; private set; }
         public Command SaveLastPlaySessionCommand { get; set; }
@@ -20,20 +25,17 @@ namespace Pekalicious.SrTracker.ViewModels
         {
             PlaySession = session;
             this.currentSeason = currentSeason;
-            SaveLastPlaySessionCommand = new Command(async () => await ExecuteSaveLastPlaySessionCommand());
+            SaveLastPlaySessionCommand = new Command(async (param) => await ExecuteSaveLastPlaySessionCommand((SaveParams)param));
         }
 
-        private async Task ExecuteSaveLastPlaySessionCommand()
+        private async Task ExecuteSaveLastPlaySessionCommand(SaveParams saveParams)
         {
+            PlaySession.FinalSkillRating = saveParams.SessionSkillRating;
             await Database.AddPlaySession(PlaySession);
+            currentSeason.HighestSkillRating = saveParams.NewSeasonHigh;
+            await Database.UpdateGameSeason(currentSeason);
             SeasonHigh = this.currentSeason.HighestSkillRating;
             OnPropertyChanged(nameof(SeasonHigh));
-        }
-
-        public async Task UpdateSeasonHigh(int newSeasonHigh)
-        {
-            currentSeason.HighestSkillRating = newSeasonHigh;
-            await Database.UpdateGameSeason(currentSeason);
         }
     }
 }
