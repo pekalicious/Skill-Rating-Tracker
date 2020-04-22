@@ -46,8 +46,9 @@
                                            FontSize="13" />
                                 </StackLayout>
                                 <Button Text="Edit"
+                                        Clicked="EditSessionButton_Clicked"
                                         BackgroundColor="Transparent"
-                                        TextColor="LightGray"/>
+                                        TextColor="Gray"/>
                             </FlexLayout>
                         </ViewCell>
                     </DataTemplate>

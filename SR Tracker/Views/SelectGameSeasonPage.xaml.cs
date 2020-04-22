@@ -46,5 +46,11 @@ namespace Pekalicious.SrTracker.Views
             await Navigation.PopAsync();
         }
 
+        async void EditSessionButton_Clicked(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var season = (GameSeason)button.Parent.BindingContext;
+            await Navigation.PushAsync(new EditGameSeasonPage(season));
+        }
     }
 }
