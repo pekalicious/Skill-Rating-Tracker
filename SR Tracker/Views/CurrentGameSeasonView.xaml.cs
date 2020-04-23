@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microcharts;
+using Microcharts.Forms;
 using Pekalicious.SrTracker.Core;
 using Pekalicious.SrTracker.Models;
 using Pekalicious.SrTracker.ViewModels;
@@ -24,6 +26,17 @@ namespace Pekalicious.SrTracker.Views
         private async void Button_OnClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SelectGameSeasonPage());
+        }
+
+        public async void OnAppearing()
+        {
+            await viewModel.ExecuteLoadCurrentGameSeasonCommand();
+            testChart.Chart = new LineChart()
+            {
+                Entries = viewModel.Entries,
+                LineMode = LineMode.Straight,
+                PointMode = PointMode.Square,
+            };
         }
     }
 }

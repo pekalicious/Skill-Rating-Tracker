@@ -52,7 +52,7 @@ namespace Pekalicious.SrTracker.Views
         async void Save_Clicked(object sender, EventArgs e)
         {
             Navigation.RemovePage(Navigation.NavigationStack.Last());
-            await Navigation.PushModalAsync(new SaveSessionPage(viewModel.EndSession(), viewModel.CurrentGameSeason));
+            await Navigation.PushAsync(new SaveSessionPage(viewModel.EndSession(), viewModel.CurrentGameSeason));
         }
 
         protected override void OnAppearing()

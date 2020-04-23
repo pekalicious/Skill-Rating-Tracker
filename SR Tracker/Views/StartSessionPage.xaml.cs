@@ -35,7 +35,7 @@ namespace Pekalicious.SrTracker.Views
         {
             base.OnAppearing();
             viewModel.CheckSeason();
-            CurrentGameSeasonView.viewModel.LoadCurrentGameSeasonCommand.Execute(null);
+            CurrentGameSeasonView.OnAppearing();
         }
     }
 }

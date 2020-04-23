@@ -28,8 +28,8 @@ namespace Pekalicious.SrTracker.Views
 
             int.TryParse(SessionSkillRating.Text, out saveParams.SessionSkillRating);
 
-            viewModel.SaveLastPlaySessionCommand.Execute(saveParams);
-            await Navigation.PopModalAsync();
+            await viewModel.ExecuteSaveLastPlaySessionCommand(saveParams);
+            await Navigation.PopAsync();
         }
     }
 }

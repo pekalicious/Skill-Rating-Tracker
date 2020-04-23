@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace Pekalicious.SrTracker.Models
 {
@@ -13,5 +14,12 @@ namespace Pekalicious.SrTracker.Models
         public string Name { get; set; }
         public int HighestSkillRating { get; set; }
         public int LastSkillRating { get; set; }
+        [OneToMany]
+        public List<PlaySession> SessionHistory { get; set; }
+
+        public GameSeason()
+        {
+            SessionHistory = new List<PlaySession>();
+        }
     }
 }

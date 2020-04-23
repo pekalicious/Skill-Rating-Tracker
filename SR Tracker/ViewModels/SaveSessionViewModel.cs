@@ -26,10 +26,11 @@ namespace Pekalicious.SrTracker.ViewModels
             SaveLastPlaySessionCommand = new Command(async (param) => await ExecuteSaveLastPlaySessionCommand((SaveParams)param));
         }
 
-        private async Task ExecuteSaveLastPlaySessionCommand(SaveParams saveParams)
+        public async Task ExecuteSaveLastPlaySessionCommand(SaveParams saveParams)
         {
             playsession.FinalSkillRating = saveParams.SessionSkillRating;
-            await Database.AddPlaySession(playsession);
+            currentSeason.LastSkillRating = saveParams.SessionSkillRating;
+            await Database.AddPlaySession(currentSeason, playsession);
             if (currentSeason.HighestSkillRating < saveParams.SessionSkillRating)
             {
                 currentSeason.HighestSkillRating = saveParams.SessionSkillRating;

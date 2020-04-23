@@ -16,6 +16,8 @@ namespace Pekalicious.SrTracker
         {
             private readonly Database _database;
 
+            private GameSeason _currentGameSeason;
+
             public UserData(Database db)
             {
                 _database = db;
@@ -23,19 +25,22 @@ namespace Pekalicious.SrTracker
 
             public async Task<Maybe<GameSeason>> LastUsedSeason()
             {
-                var stateValue = await _database.GetAppStateValue(Models.AppState.LAST_USED_SEASON);
-                if (stateValue == null)
+                if (_currentGameSeason == null)
                 {
-                    return new Maybe<GameSeason>();
+                    var stateValue = await _database.GetAppStateValue(UserDataTable.LAST_USED_SEASON);
+                    if (stateValue != null)
+                    {
+                        _currentGameSeason = await _database.GetSeasonById(int.Parse(stateValue.Value));
+                    }
                 }
 
-                GameSeason season = await _database.GetSeasonById(int.Parse(stateValue.Value));
-                return new Maybe<GameSeason>(season);
+                return new Maybe<GameSeason>(_currentGameSeason);
             }
 
             public async Task SetLastUsedSeason(GameSeason season)
             {
-                await _database.SetAppStateValue(Models.AppState.LAST_USED_SEASON, season.Id.ToString());
+                _currentGameSeason = season;
+                await _database.SetAppStateValue(UserDataTable.LAST_USED_SEASON, season.Id.ToString());
             }
         }
 
@@ -52,14 +57,14 @@ namespace Pekalicious.SrTracker
             if (initializeNewDatabase)
             {
                 _database.CreateTableAsync<GameSeason>().Wait();
-                _database.CreateTableAsync<AppState>().Wait();
+                _database.CreateTableAsync<UserDataTable>().Wait();
                 _database.CreateTableAsync<PlaySession>().Wait();
             }
 
             User = new UserData(this);
         }
 
-        private static bool DEBUG_FORCE_CREATE_DB = true;
+        private static bool DEBUG_FORCE_CREATE_DB = false;
         private bool ShouldInitializeDatabase(string path)
         {
             if (DEBUG_FORCE_CREATE_DB)
@@ -73,17 +78,23 @@ namespace Pekalicious.SrTracker
 
         public Task<List<GameSeason>> GetAllSeasons()
         {
-            return _database.Table<GameSeason>().ToListAsync();
+            return _database.GetAllWithChildrenAsync<GameSeason>();
         }
 
         public Task<GameSeason> GetSeasonById(int id)
         {
-            return _database.GetAsync<GameSeason>(id);
+            return _database.GetWithChildrenAsync<GameSeason>(id);
         }
 
-        public Task<AppState> GetAppStateValue(string key)
+        public Task<Maybe<PlaySession>> GetSessionById(int id)
         {
-            return _database.FindAsync<AppState>(key);
+            Task<PlaySession> session = _database.GetWithChildrenAsync<PlaySession>(id);
+            return Task.FromResult(new Maybe<PlaySession>(session.Result));
+        }
+
+        public Task<UserDataTable> GetAppStateValue(string key)
+        {
+            return _database.FindWithChildrenAsync<UserDataTable>(key);
         }
 
         public async Task SetAppStateValue(string key, string value)
@@ -95,23 +106,25 @@ namespace Pekalicious.SrTracker
             }
             else
             {
-                await _database.InsertAsync(new AppState() {Key = key, Value = value});
+                await _database.InsertWithChildrenAsync(new UserDataTable() {Key = key, Value = value});
             }
         }
 
-        public Task<int> AddGameSeason(GameSeason newSeason)
+        public Task AddGameSeason(GameSeason newSeason)
         {
-            return _database.InsertAsync(newSeason);
+            return _database.InsertWithChildrenAsync(newSeason);
         }
 
-        public Task<int> UpdateGameSeason(GameSeason editingGameSeason)
+        public Task UpdateGameSeason(GameSeason editingGameSeason)
         {
-            return _database.UpdateAsync(editingGameSeason);
+            return _database.UpdateWithChildrenAsync(editingGameSeason);
         }
 
-        public Task<int> AddPlaySession(PlaySession playSession)
+        public Task AddPlaySession(GameSeason season, PlaySession playSession)
         {
-            return _database.InsertAsync(playSession);
+            season.SessionHistory.Add(playSession);
+            _database.InsertWithChildrenAsync(playSession);
+            return UpdateGameSeason(season);
         }
     }
 }
