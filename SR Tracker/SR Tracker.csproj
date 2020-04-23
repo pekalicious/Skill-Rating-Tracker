@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Microcharts.Forms" Version="0.8.5-pre" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.302-beta" />
-    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
     <PackageReference Include="SQLitePCL.raw" Version="0.9.4-pre1" />
     <PackageReference Include="SQLitePCL.raw_basic" Version="0.9.0-pre8" />
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.2" />
