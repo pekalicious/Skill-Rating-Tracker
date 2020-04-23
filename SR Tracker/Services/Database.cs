@@ -58,11 +58,15 @@ namespace Pekalicious.SrTracker
             AppState = new AppStateWrapper(this);
         }
 
+        private static bool DEBUG_FORCE_CREATE_DB = true;
         private bool ShouldInitializeDatabase(string path)
         {
-            if (File.Exists(path))
-                File.Delete(path);
-            //return true;
+            if (DEBUG_FORCE_CREATE_DB)
+            {
+                if (File.Exists(path))
+                    File.Delete(path);
+                return true;
+            }
             return !File.Exists(path);
         }
 
