@@ -7,7 +7,7 @@ using SQLite;
 
 namespace Pekalicious.SrTracker.Models
 {
-    [Table("AppState")]
+    [Table("User")]
     public class AppState
     {
         public const string LAST_USED_SEASON = "LAST_USED_SEASON";

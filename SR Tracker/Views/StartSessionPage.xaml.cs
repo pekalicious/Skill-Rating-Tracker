@@ -27,7 +27,7 @@ namespace Pekalicious.SrTracker.Views
         async void StartSessionButton_Clicked(object sender, EventArgs e)
         {
             var db = DependencyService.Get<Database>();
-            Maybe<GameSeason> lastSeason = await db.AppState.LastUsedSeason();
+            Maybe<GameSeason> lastSeason = await db.User.LastUsedSeason();
             await Navigation.PushAsync(new CurrentSessionPage(lastSeason.Item)); //TODO: Should not pass Maybe<T>.Item
         }
 

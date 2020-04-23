@@ -28,7 +28,7 @@ namespace Pekalicious.SrTracker.ViewModels
 
         async void LoadCurrentGameSeason()
         {
-            Maybe<GameSeason> lastUsedSeason = await Database.AppState.LastUsedSeason();
+            Maybe<GameSeason> lastUsedSeason = await Database.User.LastUsedSeason();
             if (lastUsedSeason.HasItem)
             {
                 SelectedGameSeason = lastUsedSeason.Item.Name;

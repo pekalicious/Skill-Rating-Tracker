@@ -22,7 +22,7 @@ namespace Pekalicious.SrTracker.ViewModels
 
         private async Task ExecuteLoadCurrentGameSeasonCommand()
         {
-            Maybe<GameSeason> currentSeason = await Database.AppState.LastUsedSeason();
+            Maybe<GameSeason> currentSeason = await Database.User.LastUsedSeason();
             if (currentSeason.HasItem)
             {
                 CurrentRating = currentSeason.Item.LastSkillRating.ToString();

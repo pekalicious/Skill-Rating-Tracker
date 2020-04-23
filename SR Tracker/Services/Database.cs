@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Pekalicious.SrTracker.Core;
 using Pekalicious.SrTracker.Models;
 using SQLite;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace Pekalicious.SrTracker
 {
     public class Database
     {
-        public class AppStateWrapper
+        public class UserData
         {
             private readonly Database _database;
 
-            public AppStateWrapper(Database db)
+            public UserData(Database db)
             {
                 _database = db;
             }
@@ -38,7 +39,7 @@ namespace Pekalicious.SrTracker
             }
         }
 
-        public AppStateWrapper AppState { get; private set; }
+        public UserData User { get; }
 
         private readonly SQLiteAsyncConnection _database;
 
@@ -55,7 +56,7 @@ namespace Pekalicious.SrTracker
                 _database.CreateTableAsync<PlaySession>().Wait();
             }
 
-            AppState = new AppStateWrapper(this);
+            User = new UserData(this);
         }
 
         private static bool DEBUG_FORCE_CREATE_DB = true;

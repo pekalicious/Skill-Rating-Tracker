@@ -11,7 +11,7 @@ namespace Pekalicious.SrTracker.ViewModels
 
         public async void CheckSeason()
         {
-            var season = await Database.AppState.LastUsedSeason();
+            var season = await Database.User.LastUsedSeason();
             CanStartSession = season.HasItem;
             OnPropertyChanged(nameof(CanStartSession));
             OnPropertyChanged(nameof(ShowLabel));

@@ -55,7 +55,7 @@ namespace Pekalicious.SrTracker.ViewModels
 
         public async void SelectGameSeason(GameSeason item)
         {
-            await Database.AppState.SetLastUsedSeason(item);
+            await Database.User.SetLastUsedSeason(item);
         }
     }
 }
