@@ -14,7 +14,7 @@ namespace Pekalicious.SrTracker
 
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<Database>();
-            MainPage = new NavigationPage(new StartSessionPage());
+            MainPage = new NavigationPage(new MainPageView());
         }
 
         protected override void OnStart()

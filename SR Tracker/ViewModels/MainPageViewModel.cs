@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pekalicious.SrTracker.ViewModels
 {
-    public class StartSessionViewModel : BaseViewModel
+    public class MainPageViewModel : BaseViewModel
     {
         public bool CanStartSession { get; private set; } = false;
         public bool ShowLabel => !CanStartSession;

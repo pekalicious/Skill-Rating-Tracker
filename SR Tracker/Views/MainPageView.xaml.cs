@@ -12,16 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace Pekalicious.SrTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StartSessionPage : ContentPage
+    public partial class MainPageView : ContentPage
     {
-        private StartSessionViewModel viewModel;
+        private MainPageViewModel viewModel;
 
-        public StartSessionPage()
+        public MainPageView()
         {
             InitializeComponent();
 
             Title = "SR Tracker";
-            BindingContext = viewModel = new StartSessionViewModel();
+            BindingContext = viewModel = new MainPageViewModel();
         }
 
         async void StartSessionButton_Clicked(object sender, EventArgs e)

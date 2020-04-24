@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views1="clr-namespace:Pekalicious.SrTracker.Views"
              mc:Ignorable="d"
-             x:Class="Pekalicious.SrTracker.Views.StartSessionPage">
+             x:Class="Pekalicious.SrTracker.Views.MainPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
