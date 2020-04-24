@@ -34,6 +34,8 @@ namespace Pekalicious.SrTracker
                     }
                 }
 
+                if (_currentGameSeason == null) return new Maybe<GameSeason>();
+
                 return new Maybe<GameSeason>(_currentGameSeason);
             }
 
