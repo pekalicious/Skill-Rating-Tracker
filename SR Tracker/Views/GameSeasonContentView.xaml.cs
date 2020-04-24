@@ -14,13 +14,13 @@ using Xamarin.Forms.Xaml;
 namespace Pekalicious.SrTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CurrentGameSeasonView : ContentView
+    public partial class GameSeasonContentView : ContentView
     {
-        public CurrentGameSeasonViewModel viewModel { get; private set; }
-        public CurrentGameSeasonView()
+        public GameSeasonContentViewModel viewModel { get; private set; }
+        public GameSeasonContentView()
         {
             InitializeComponent();
-            BindingContext = viewModel = new CurrentGameSeasonViewModel();
+            BindingContext = viewModel = new GameSeasonContentViewModel();
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)

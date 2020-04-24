@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace Pekalicious.SrTracker.ViewModels
 {
-    public class CurrentGameSeasonViewModel : BaseViewModel
+    public class GameSeasonContentViewModel : BaseViewModel
     {
         public string CurrentRating { get; private set; }
         public string SeasonHigh { get; private set; }
@@ -20,7 +20,7 @@ namespace Pekalicious.SrTracker.ViewModels
 
         public Command LoadCurrentGameSeasonCommand { get; set; }
 
-        public CurrentGameSeasonViewModel()
+        public GameSeasonContentViewModel()
         {
             LoadCurrentGameSeasonCommand = new Command(async () => await ExecuteLoadCurrentGameSeasonCommand());
         }

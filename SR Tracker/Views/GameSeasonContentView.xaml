@@ -6,7 +6,7 @@
              xmlns:fontawesome="clr-namespace:FontAwesome"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              mc:Ignorable="d"
-             x:Class="Pekalicious.SrTracker.Views.CurrentGameSeasonView">
+             x:Class="Pekalicious.SrTracker.Views.GameSeasonContentView">
     <ContentView.Content>
         <Grid WidthRequest="300" HeightRequest="300" HorizontalOptions="Center">
             <Grid.RowDefinitions>

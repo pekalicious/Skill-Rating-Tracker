@@ -25,13 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\GameSeasonContentView.xaml.cs">
+      <DependentUpon>GameSeasonContentView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\CurrentSessionPage.xaml.cs">
       <DependentUpon>CurrentSessionPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\CurrentGameSeasonView.xaml">
+    <EmbeddedResource Update="Views\GameSeasonContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditGameSeasonPage.xaml">

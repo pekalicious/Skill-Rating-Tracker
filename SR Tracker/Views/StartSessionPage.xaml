@@ -21,7 +21,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <views1:CurrentGameSeasonView Grid.Row="0" x:Name="CurrentGameSeasonView" />
+            <views1:GameSeasonContentView Grid.Row="0" x:Name="CurrentGameSeasonView" />
             <Button Grid.Row="1" Text="Start New Session"
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"
