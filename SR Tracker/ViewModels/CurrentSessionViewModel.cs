@@ -93,6 +93,7 @@ namespace Pekalicious.SrTracker.ViewModels
         }
 
         public int HighestSkillRating { get; private set; }
+        public int LastSkillRating { get; private set; }
         public ChartEntry[] Entries {
             get
             {
@@ -116,6 +117,7 @@ namespace Pekalicious.SrTracker.ViewModels
             Title = "Today";
             CurrentGameSeason = currentSeason;
             HighestSkillRating = CurrentGameSeason.HighestSkillRating;
+            LastSkillRating = CurrentGameSeason.LastSkillRating;
 
             StartNewSession();
         }
