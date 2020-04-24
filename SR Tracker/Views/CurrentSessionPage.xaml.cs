@@ -68,7 +68,8 @@ namespace Pekalicious.SrTracker.Views
             {
                 Entries = viewModel.Entries,
                 LineMode = LineMode.Straight,
-                PointMode = PointMode.Square,
+                PointMode = PointMode.Circle,
+                PointSize = 26
             };
         }
     }
