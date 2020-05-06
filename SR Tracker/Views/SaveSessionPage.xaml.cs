@@ -20,6 +20,14 @@ namespace Pekalicious.SrTracker.Views
             InitializeComponent();
 
             BindingContext = viewModel = new SaveSessionViewModel(session, currentSeason);
+            SessionSkillRating.ReturnCommand = new Command(() => Button_OnClicked(SessionSkillRating, EventArgs.Empty));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            SessionSkillRating.Focus();
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)
