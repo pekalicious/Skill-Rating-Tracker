@@ -17,6 +17,8 @@ namespace Pekalicious.SrTracker.ViewModels
         public string SeasonHigh { get; private set; }
         public string CurrentSeasonName { get; private set; }
         public ChartEntry[] Entries { get; private set; } = new ChartEntry[0];
+        public int MinSr { get; private set; }
+        public int MaxSr { get; private set; }
 
         public Command LoadCurrentGameSeasonCommand { get; set; }
 
@@ -34,14 +36,43 @@ namespace Pekalicious.SrTracker.ViewModels
                 SeasonHigh = currentSeason.Item.HighestSkillRating.ToString();
                 CurrentSeasonName = currentSeason.Item.Name;
 
+                MinSr = 5000;
+                MaxSr = 0;
+
                 List<ChartEntry> sessions = new List<ChartEntry>();
-                foreach (PlaySession session in currentSeason.Item.SessionHistory)
+                for (int i = 0; i < currentSeason.Item.SessionHistory.Count; i++)
                 {
-                    sessions.Add(new ChartEntry(session.FinalSkillRating)
+                    int sr = currentSeason.Item.SessionHistory[i].FinalSkillRating;
+                    ChartEntry entry = new ChartEntry(sr);
+                    entry.Label = "";
+                    entry.ValueLabel = "";
+                    if (i == 0)
                     {
-                        Label = "", ValueLabel = "",
-                        Color = session.FinalSkillRating > 0 ? SKColor.Parse("#00FF00") : SKColor.Parse("#FF0000")
-                    });
+                        entry.Color = SKColor.Parse("#0000FF");
+                    }
+                    else if (sr > currentSeason.Item.SessionHistory[i - 1].FinalSkillRating)
+                    {
+                        entry.Color = SKColor.Parse("#00FF00");
+                    }
+                    else if (sr < currentSeason.Item.SessionHistory[i - 1].FinalSkillRating)
+                    {
+                        entry.Color = SKColor.Parse("#FF0000");
+                    }
+                    else
+                    {
+                        entry.Color = SKColor.Parse("#0000FF");
+                    }
+
+                    if (sr > MaxSr)
+                    {
+                        MaxSr = sr;
+                    }
+
+                    if (sr < MinSr)
+                    {
+                        MinSr = sr;
+                    }
+                    sessions.Add(entry);
                 }
                 Entries = sessions.ToArray();
 

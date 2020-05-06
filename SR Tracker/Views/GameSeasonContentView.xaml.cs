@@ -31,12 +31,14 @@ namespace Pekalicious.SrTracker.Views
         public async void OnAppearing()
         {
             await viewModel.ExecuteLoadCurrentGameSeasonCommand();
-            testChart.Chart = new LineChart()
+            testChart.Chart = new LineChart
             {
                 Entries = viewModel.Entries,
                 LineMode = LineMode.Straight,
                 PointMode = PointMode.Circle,
-                PointSize = 26
+                PointSize = 26,
+                MinValue = viewModel.MinSr - 100,
+                MaxValue = viewModel.MaxSr + 100
             };
         }
     }
